@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
+import { useWeb3 } from '../utils/useWeb3';
+const { getAccount } = useWeb3()
 defineProps<{ msg: string }>()
-
+const getAddress = async () => {
+  getAccount()
+  // const [account] = await getAccount()
+  // console.log(account)
+}
+getAddress()
 const count = ref(0)
 </script>
 
