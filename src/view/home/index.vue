@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <router-view></router-view>
+  <div>123</div>
 </template>
 
 <style>

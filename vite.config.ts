@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import legacy from '@vitejs/plugin-legacy'
 import compressPlugin from 'vite-plugin-compression'
+import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -19,5 +20,15 @@ export default defineConfig({
           algorithm: 'gzip', // 压缩算法 可选 ['gzip','brotliCompress' ,'deflate','deflateRaw']
           ext: '.gz', // 生成的压缩包后缀
       })
-  ]
+  ],
+    server: {
+        port: 4000, // 服务端口号
+        open: true, // 服务启动时是否自动打开浏览器
+        cors: true // 允许跨域
+    },
+    resolve: {
+      alias: {
+          src: resolve(__dirname, 'src')
+      }
+    }
 })
