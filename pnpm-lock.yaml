@@ -7,6 +7,7 @@ specifiers:
   '@vitejs/plugin-legacy': ^1.8.0
   '@vitejs/plugin-vue': ^2.3.0
   element-plus: ^2.1.8
+  pinia: ^2.0.0-rc.10
   typescript: ^4.5.4
   unplugin-auto-import: ^0.6.9
   unplugin-vue-components: ^0.18.5
@@ -16,14 +17,13 @@ specifiers:
   vue: ^3.2.31
   vue-router: ^4.0.13
   vue-tsc: ^0.29.8
-  vuex: ^4.0.2
   web3: ^1.7.1
 
 dependencies:
   element-plus: 2.1.8_1a412d14def5ff5ca1122000e4bee666
+  pinia: 2.0.0-rc.10_typescript@4.6.3+vue@3.2.31
   vue: 3.2.31
   vue-router: 4.0.14_vue@3.2.31
-  vuex: 4.0.2_vue@3.2.31
   web3: 1.7.3
 
 devDependencies:
@@ -2734,6 +2734,24 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
+  /pinia/2.0.0-rc.10_typescript@4.6.3+vue@3.2.31:
+    resolution: {integrity: sha512-WY0KQoHxSBylhGc6aBQKPFfAupYHWpI1QBQKJSyK9btwwMTVQpwCdePgPho+ZoEMl832jb7RwfI5TN1srV5VEA==}
+    peerDependencies:
+      '@vue/composition-api': ^1.2.2
+      typescript: ^4.4.3
+      vue: ^2.6.14 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.1.4
+      typescript: 4.6.3
+      vue: 3.2.31
+      vue-demi: 0.12.5_vue@3.2.31
+    dev: false
+
   /postcss/8.4.12:
     resolution: {integrity: sha512-lg6eITwYe9v6Hr5CncVbK70SoioNQIq81nsaG86ev5hAidQvmOeETBqs7jm43K2F5/Ley3ytDtriImV6TpNiSg==}
     engines: {node: ^10 || ^12 || >=14}
@@ -3776,15 +3794,6 @@ packages:
       '@vue/runtime-dom': 3.2.31
       '@vue/server-renderer': 3.2.31_vue@3.2.31
       '@vue/shared': 3.2.31
-    dev: false
-
-  /vuex/4.0.2_vue@3.2.31:
-    resolution: {integrity: sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==}
-    peerDependencies:
-      vue: ^3.0.2
-    dependencies:
-      '@vue/devtools-api': 6.1.4
-      vue: 3.2.31
     dev: false
 
   /web3-bzz/1.7.3:
