@@ -4,6 +4,9 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import legacy from '@vitejs/plugin-legacy'
 import compressPlugin from 'vite-plugin-compression'
 import { resolve } from 'path'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -19,6 +22,12 @@ export default defineConfig({
           threshold: 10240, // 文件容量大于这个值进行压缩，它将被压缩，单位为b
           algorithm: 'gzip', // 压缩算法 可选 ['gzip','brotliCompress' ,'deflate','deflateRaw']
           ext: '.gz', // 生成的压缩包后缀
+      }),
+      AutoImport({
+          resolvers: [ElementPlusResolver()]
+      }),
+      Components({
+          resolvers: [ElementPlusResolver()]
       })
   ],
     server: {
