@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import legacy from '@vitejs/plugin-legacy'
 import compressPlugin from 'vite-plugin-compression'
-import { resolve } from 'path'
+import * as path from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
@@ -37,8 +37,8 @@ export default defineConfig({
     },
     resolve: {
       alias: {
-          src: resolve(__dirname, 'src'),
-          comps: resolve(__dirname, 'src/components'),
+          'src': path.resolve(__dirname, 'src'),
+          'comps': path.resolve(__dirname, 'src/components'),
       }
     }
 })
