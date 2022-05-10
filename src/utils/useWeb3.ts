@@ -1,4 +1,3 @@
-import Web3 from 'web3';
 export function useWeb3() {
     async function getAccount(): Promise<any> {
         return new Promise((async (resolve, reject) => {

@@ -37,8 +37,9 @@ export default defineConfig({
     },
     resolve: {
       alias: {
-          'src': path.resolve(__dirname, 'src'),
-          'comps': path.resolve(__dirname, 'src/components'),
+          src: path.resolve(__dirname, 'src'),
+          store: path.resolve(__dirname, 'src/store'),
+          comps: path.resolve(__dirname, 'src/components'),
       }
     }
 })

@@ -10,7 +10,8 @@
   "dependencies": {
     "element-plus": "^2.1.8",
     "pinia": "^2.0.0-rc.10",
-    "vue": "^3.2.31",
+    "src": "^1.1.2",
+    "vue": "^3.2.33",
     "vue-router": "^4.0.13",
     "web3": "^1.7.1"
   },
