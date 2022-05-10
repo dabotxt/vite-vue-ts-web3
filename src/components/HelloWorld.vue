@@ -1,43 +1,21 @@
 <script setup lang="ts">
-import { useWeb3 } from '../utils/useWeb3'
-import { useUserStore } from 'store/modules/user'
-import { ref } from 'vue'
-const { getAccount } = useWeb3()
-const user = useUserStore()
+import { UserStore } from 'store/modules/user'
+import { computed } from 'vue'
+const user = UserStore()
 defineProps<{ msg: string }>()
 const getAddress = async () => {
-  const account = await getAccount()
-  console.log(account)
+  await user.getWallet()
 }
+const walletAddress = computed((): string | null => {
+  return user.getWalletAddress
+})
 getAddress()
-const count = ref(0)
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
-<!--  <h2>{{ count }}</h2>-->
-  <p>
-    Recommended IDE setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
-    +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
-
-  <p>See <code>README.md</code> for more information.</p>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Docs
-    </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
-  </p>
-
-  <button type="button" @click="count++">count is:</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+  <div>钱包地址：{{walletAddress}}</div>
+  钱包地址：0x93CFfAF883bFdb964c5E66d7b599f8020D919d65
 </template>
 
 <style scoped>

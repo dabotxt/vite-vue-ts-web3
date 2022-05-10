@@ -27,6 +27,12 @@ export function useWeb3() {
             }
         })
     }
+    async function onEvents () {
+        window.ethereum.on("accountsChanged", function(accounts: any) {
+            console.log(accounts[0]);//一旦切换账号这里就会执行
+            console.log('账号切换')
+        })
+    }
     return {
         getAccount
     }
