@@ -1,4 +1,6 @@
+import { UserStore } from 'store/modules/user'
 export function useWeb3() {
+    const user = UserStore()
     async function getAccount(): Promise<any> {
         return new Promise((async (resolve, reject) => {
             await isMetamask()
@@ -7,6 +9,7 @@ export function useWeb3() {
                     window.ethereum
                         .request({method: 'eth_requestAccounts'})
                         .then((res: string[]) => {
+                            onEvents()
                             resolve(res)
                         })
                         .catch((res: string[]) => {
@@ -28,12 +31,22 @@ export function useWeb3() {
         })
     }
     async function onEvents () {
-        window.ethereum.on("accountsChanged", function(accounts: any) {
-            console.log(accounts[0]);//一旦切换账号这里就会执行
-            console.log('账号切换')
+        //  一旦切换账号这里就会执行
+        window.ethereum.on("accountsChanged", function(accounts: string[]) {
+            if (accounts.length > 0) {
+                user.setWalletAddress(accounts[0])
+            }
         })
     }
+    async function getBalance(account: string | null) {
+        const balance = window.ethereum.request({method: 'eth_getBalance', params: [account, 'latest']})
+            .then((res: any) => {
+                console.log(res);
+            })
+        console.log(balance)
+    }
     return {
-        getAccount
+        getAccount,
+        getBalance
     }
 }

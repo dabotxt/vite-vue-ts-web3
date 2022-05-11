@@ -2,16 +2,16 @@ import { defineStore } from 'pinia'
 import { useWeb3 } from 'src/utils/useWeb3'
 import { store } from '../index'
 interface UserState {
-  walletAddress: [string | null]
+  walletAddress: string | null
 }
 export const useUserStore = defineStore({
   id: 'app-user',
   state: (): UserState => ({
-    walletAddress: [null]
+    walletAddress: null
   }),
   getters: {
     getWalletAddress(): string | null {
-      return this.walletAddress[0]
+      return this.walletAddress
     }
   },
   actions: {
@@ -21,7 +21,7 @@ export const useUserStore = defineStore({
     async getWallet () {
       const { getAccount } = useWeb3()
       const account = await getAccount()
-      this.setWalletAddress(account)
+      this.setWalletAddress(account[0])
     }
   }
 })
